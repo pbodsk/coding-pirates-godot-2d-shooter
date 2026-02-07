@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bsrrvqwrecthn"]
+
+[ext_resource type="Texture2D" uid="uid://ys8su77rtc2v" path="res://Background/Space_02-Sheet.png" id="1_5nc5v"]
+
+[node name="Background" type="Node2D" unique_id=1678051302]
+
+[node name="Parallax1" type="Parallax2D" parent="." unique_id=1792036762]
+repeat_size = Vector2(0, 500)
+autoscroll = Vector2(0, 10)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax1" unique_id=1352065947]
+position = Vector2(250, 250)
+texture = ExtResource("1_5nc5v")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+
+[node name="Parallax2" type="Parallax2D" parent="." unique_id=230625316]
+repeat_size = Vector2(0, 500)
+autoscroll = Vector2(0, 30)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2" unique_id=545510787]
+position = Vector2(250, 250)
+texture = ExtResource("1_5nc5v")
+region_enabled = true
+region_rect = Rect2(0, 500, 500, 500)
+
+[node name="Parallax3" type="Parallax2D" parent="." unique_id=862135600]
+repeat_size = Vector2(0, 500)
+autoscroll = Vector2(0, 50)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax3" unique_id=288384488]
+position = Vector2(250, 250)
+texture = ExtResource("1_5nc5v")
+region_enabled = true
+region_rect = Rect2(0, 1000, 500, 500)
+
+[node name="Parallax4" type="Parallax2D" parent="." unique_id=196334881]
+repeat_size = Vector2(0, 500)
+autoscroll = Vector2(0, 70)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax4" unique_id=1738391191]
+position = Vector2(250, 250)
+texture = ExtResource("1_5nc5v")
+region_enabled = true
+region_rect = Rect2(0, 1500, 500, 500)
+
+[node name="Parallax5" type="Parallax2D" parent="." unique_id=172535237]
+repeat_size = Vector2(0, 500)
+autoscroll = Vector2(0, 90)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax5" unique_id=379767471]
+position = Vector2(250, 250)
+texture = ExtResource("1_5nc5v")
+region_enabled = true
+region_rect = Rect2(0, 2000, 500, 500)
