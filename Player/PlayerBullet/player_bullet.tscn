@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bekkn5a2oxd0a"]
+
+[ext_resource type="Texture2D" uid="uid://56hpi4jdatxx" path="res://Player/PlayerBullet/Projectile01.png" id="1_pgjkb"]
+[ext_resource type="Script" uid="uid://cp25koc2enod0" path="res://Player/PlayerBullet/player_bullet.gd" id="1_sdlsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlsx"]
+size = Vector2(6, 9)
+
+[node name="PlayerBullet" type="Area2D" unique_id=1307808654]
+script = ExtResource("1_sdlsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306089593]
+shape = SubResource("RectangleShape2D_sdlsx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726900880]
+texture = ExtResource("1_pgjkb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=44146809]
+position = Vector2(0, -1)
+rect = Rect2(-3, -4, 6, 10)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

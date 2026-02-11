@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkpytlyxuwear" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://pbh6romh142r" path="res://Player/Player01-Sheet.png" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://bekkn5a2oxd0a" path="res://Player/PlayerBullet/player_bullet.tscn" id="2_gwnis"]
 [ext_resource type="Texture2D" uid="uid://d4hhnfasg6we7" path="res://Player/Boosters.png" id="3_btcbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvfyp"]
@@ -84,6 +85,7 @@ animations = [{
 
 [node name="Player" type="Area2D" unique_id=1582204631]
 script = ExtResource("1_4ntmi")
+player_bullet = ExtResource("2_gwnis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1222100321]
 position = Vector2(0, 0.5)
@@ -96,3 +98,8 @@ animation = &"right"
 [node name="Boosters" type="AnimatedSprite2D" parent="." unique_id=776355778]
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_00tjw")
+
+[node name="GunCooldownTimer" type="Timer" parent="." unique_id=1695027402]
+one_shot = true
+
+[connection signal="timeout" from="GunCooldownTimer" to="." method="_on_gun_cooldown_timer_timeout"]
