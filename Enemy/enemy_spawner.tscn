@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://clnntph0j5mhu"]
+
+[ext_resource type="Script" uid="uid://bpr2d7ibgeqhw" path="res://Enemy/enemy_spawner.gd" id="1_s6n2o"]
+[ext_resource type="PackedScene" uid="uid://b3qs8pc0en6da" path="res://Enemy/enemy_path.tscn" id="2_t1s26"]
+[ext_resource type="PackedScene" uid="uid://d3bu3t8p6i8kp" path="res://Enemy/enemy_on_path.tscn" id="2_yioa4"]
+
+[node name="EnemySpawner" type="Node2D" unique_id=451140309]
+script = ExtResource("1_s6n2o")
+enemy_on_path = ExtResource("2_yioa4")
+
+[node name="EnemyPath" parent="." unique_id=42645851 instance=ExtResource("2_t1s26")]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=66377466]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://174m0773ost7"]
+
+[ext_resource type="Script" uid="uid://dikm876ycr2i4" path="res://Enemy/enemy.gd" id="1_px1sc"]
+[ext_resource type="Texture2D" uid="uid://dpmmxx3murb24" path="res://Enemy/Gunship.png" id="2_am0pq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqilm"]
+size = Vector2(62, 64)
+
+[node name="Enemy" type="Area2D" unique_id=893029048]
+script = ExtResource("1_px1sc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=766292375]
+shape = SubResource("RectangleShape2D_eqilm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1741078366]
+texture = ExtResource("2_am0pq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1151963449]
+rect = Rect2(-31, -32, 62, 64)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
