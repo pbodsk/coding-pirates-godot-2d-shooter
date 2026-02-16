@@ -24,5 +24,5 @@ func _process(delta: float) -> void:
 func _on_enemy_enemy_hit() -> void:
 	is_dead = true
 
-func _on_enemy_died(value) -> void:
+func _on_enemy_died(points: int) -> void:
 	queue_free()

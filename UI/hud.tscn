@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cjci4whwwprh2"]
+
+[ext_resource type="Script" uid="uid://demsbfhl4afmp" path="res://UI/hud.gd" id="1_2o5uh"]
+[ext_resource type="Texture2D" uid="uid://beukwolgn3dnp" path="res://UI/bar_background.png" id="1_bytes"]
+[ext_resource type="Texture2D" uid="uid://dsbrkpebu6ipp" path="res://UI/bar_foreground.png" id="2_2o5uh"]
+
+[node name="HUD" type="MarginContainer" unique_id=1630456279]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_2o5uh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=587767779]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="ShieldBar" type="TextureProgressBar" parent="HBoxContainer" unique_id=144911353]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+max_value = 3.0
+exp_edit = true
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("1_bytes")
+texture_progress = ExtResource("2_2o5uh")
+
+[node name="Score" type="Label" parent="HBoxContainer" unique_id=1881719836]
+layout_mode = 2

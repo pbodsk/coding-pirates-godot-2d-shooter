@@ -1,6 +1,6 @@
 extends Area2D
 
-signal enemy_hit
+signal enemy_hit(points: int)
 signal died
 
 @export var bullet: PackedScene
@@ -17,11 +17,11 @@ func _process(delta: float) -> void:
 	pass
 	
 func hit() -> void:
-	enemy_hit.emit()
+	enemy_hit.emit(5)
 	$ShootTimer.stop()
 	$Ship.play("explosion")
 	await $Ship.animation_finished
-	died.emit(5)
+	died.emit()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

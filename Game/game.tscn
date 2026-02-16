@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://bsbnonj34e8b"]
 
 [ext_resource type="PackedScene" uid="uid://bjpjfhv87jj6s" path="res://Player/player.tscn" id="1_bk3v5"]
+[ext_resource type="Script" uid="uid://cj1ek2kswy5bm" path="res://Game/game.gd" id="1_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://bsrrvqwrecthn" path="res://Background/background.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://clnntph0j5mhu" path="res://Enemy/enemy_spawner.tscn" id="3_7raqb"]
+[ext_resource type="Texture2D" uid="uid://1wmqh08f7i4s" path="res://UI/START.png" id="4_jcm6v"]
+[ext_resource type="PackedScene" uid="uid://cjci4whwwprh2" path="res://UI/hud.tscn" id="5_oomkl"]
+[ext_resource type="Texture2D" uid="uid://cmfndhsrawdkm" path="res://UI/GAME_OVER.png" id="6_qmv3x"]
 
 [node name="Game" type="Node2D" unique_id=573201284]
+script = ExtResource("1_fwxkx")
 
 [node name="Background" parent="." unique_id=1678051302 instance=ExtResource("2_1r4le")]
 
@@ -12,3 +17,28 @@
 position = Vector2(231, 541)
 
 [node name="EnemySpawner" parent="." unique_id=451140309 instance=ExtResource("3_7raqb")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1299107363]
+
+[node name="HUD" parent="UI" unique_id=1630456279 instance=ExtResource("5_oomkl")]
+offset_bottom = 55.0
+
+[node name="CenterContainer" type="CenterContainer" parent="UI" unique_id=924079590]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="UI/CenterContainer" unique_id=732725346]
+layout_mode = 2
+texture_normal = ExtResource("4_jcm6v")
+
+[node name="GameOver" type="TextureRect" parent="UI/CenterContainer" unique_id=1164395133]
+layout_mode = 2
+texture = ExtResource("6_qmv3x")
+
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="shield_changed" from="Player" to="." method="_on_player_shield_changed"]
+[connection signal="scored_points" from="EnemySpawner" to="." method="_on_enemy_spawner_scored_points"]
+[connection signal="pressed" from="UI/CenterContainer/Start" to="." method="_on_start_pressed"]

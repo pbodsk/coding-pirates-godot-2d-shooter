@@ -1,5 +1,9 @@
 extends Area2D
 
+# Signals
+signal player_died
+signal shield_changed(max_shield: int, shield: int)
+
 @onready var screen_size = get_viewport_rect().size
 @export var speed = 400.0
 @export var player_bullet: PackedScene
@@ -18,12 +22,22 @@ func start():
 	position = Vector2(screen_size.x / 2, screen_size.y - 64)
 	
 	shield = max_shield
+	
+	shield_changed.emit(max_shield, shield)
+	
+	$Ship.show()
+	$Ship.play("forward")
 	$Boosters.show()
 	$Boosters.play("default")
+	
+func stop():
+	$Ship.hide()
+	$Boosters.hide()
+	can_shoot = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,16 +81,18 @@ func shoot():
 	
 func hit() -> void:
 	shield -= 1
+	shield_changed.emit(max_shield, shield)
 	if shield <= 0:
 		die()
 		
 func die() -> void:
+	if is_dead:
+		return
 	is_dead = true
 	$Boosters.hide()
 	$Ship.play("explode")
 	await $Ship.animation_finished
-	queue_free()
-	
+	player_died.emit()
 
 func _on_gun_cooldown_timer_timeout() -> void:
 	can_shoot = true
