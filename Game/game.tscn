@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://cj1ek2kswy5bm" path="res://Game/game.gd" id="1_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://bsrrvqwrecthn" path="res://Background/background.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://clnntph0j5mhu" path="res://Enemy/enemy_spawner.tscn" id="3_7raqb"]
-[ext_resource type="Texture2D" uid="uid://1wmqh08f7i4s" path="res://UI/START.png" id="4_jcm6v"]
 [ext_resource type="PackedScene" uid="uid://cjci4whwwprh2" path="res://UI/hud.tscn" id="5_oomkl"]
 [ext_resource type="Texture2D" uid="uid://cmfndhsrawdkm" path="res://UI/GAME_OVER.png" id="6_qmv3x"]
+[ext_resource type="FontFile" uid="uid://bb6ms7a4rw0lm" path="res://UI/Fonts/Xolonium-Regular.ttf" id="7_oomkl"]
 
 [node name="Game" type="Node2D" unique_id=573201284]
 script = ExtResource("1_fwxkx")
@@ -30,15 +30,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Start" type="TextureButton" parent="UI/CenterContainer" unique_id=732725346]
-layout_mode = 2
-texture_normal = ExtResource("4_jcm6v")
-
 [node name="GameOver" type="TextureRect" parent="UI/CenterContainer" unique_id=1164395133]
 layout_mode = 2
 texture = ExtResource("6_qmv3x")
 
+[node name="StartContainer" type="VBoxContainer" parent="UI/CenterContainer" unique_id=1870120211]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="UI/CenterContainer/StartContainer" unique_id=743299193]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_oomkl")
+theme_override_font_sizes/font_size = 63
+text = "Space Pirates"
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="UI/CenterContainer/StartContainer" unique_id=1802945917]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.19607843, 0.78431374, 0, 1)
+theme_override_colors/font_hover_color = Color(0.15686275, 0.78431374, 0.9490196, 1)
+theme_override_fonts/font = ExtResource("7_oomkl")
+theme_override_font_sizes/font_size = 40
+text = "START"
+flat = true
+
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
 [connection signal="shield_changed" from="Player" to="." method="_on_player_shield_changed"]
 [connection signal="scored_points" from="EnemySpawner" to="." method="_on_enemy_spawner_scored_points"]
-[connection signal="pressed" from="UI/CenterContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/StartContainer/Start" to="." method="_on_start_pressed"]

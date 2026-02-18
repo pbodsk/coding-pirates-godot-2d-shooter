@@ -7,7 +7,7 @@ signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Ship.play("default")
+	$Ship.play("enemy1")
 	$ShootTimer.wait_time = randf_range(0.75, 1.5)
 	$ShootTimer.start()
 
@@ -15,6 +15,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func set_enemy_type(type: int) -> void:
+	if type == 0:
+		$Ship.play("enemy1")
+	elif type == 1:
+		$Ship.play("enemy2")
+	else:
+		$Ship.play("enemy3")
 	
 func hit() -> void:
 	enemy_hit.emit(5)

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://n38h0nukg0ul"]
+
+[sub_resource type="Curve2D" id="Curve2D_li6pm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 229, -42, 5.9895005, -79.1945, -5.9895005, 79.1945, 311, 184, 4.6585, -82.522, -4.6585, 82.522, 214, 388, 12.644501, -59.229504, -12.644501, 59.229504, 319, 528, 0, 0, 0, 0, 212, 760)
+}
+point_count = 5
+
+[node name="CenterPath" type="Path2D" unique_id=1767353332]
+curve = SubResource("Curve2D_li6pm")

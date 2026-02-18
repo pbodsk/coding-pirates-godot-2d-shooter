@@ -6,5 +6,5 @@ _data = {
 }
 point_count = 5
 
-[node name="EnemyPath" type="Path2D" unique_id=42645851]
+[node name="LeftToRightPath" type="Path2D" unique_id=42645851]
 curve = SubResource("Curve2D_6s3kg")

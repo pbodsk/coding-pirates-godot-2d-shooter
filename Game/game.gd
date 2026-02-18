@@ -8,7 +8,7 @@ func _ready() -> void:
 	$UI/CenterContainer/GameOver.hide()
 
 func _on_start_pressed() -> void:
-	$UI/CenterContainer/Start.hide()
+	$UI/CenterContainer/StartContainer.hide()
 	score = 0
 	$UI/HUD.update_score(score)
 	
@@ -27,7 +27,7 @@ func _on_player_player_died() -> void:
 	$UI/CenterContainer/GameOver.hide()
 	
 	# Show Start
-	$UI/CenterContainer/Start.show()
+	$UI/CenterContainer/StartContainer.show()
 
 
 func _on_player_shield_changed(max_shield, shield) -> void:

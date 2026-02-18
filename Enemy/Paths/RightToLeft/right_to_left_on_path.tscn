@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dkgn522dt4vk7"]
+
+[ext_resource type="PackedScene" uid="uid://174m0773ost7" path="res://Enemy/enemy.tscn" id="2_dgexa"]
+
+[sub_resource type="GDScript" id="GDScript_nd2ck"]
+script/source = "extends PathFollow2D
+
+
+@export var speed = 200.0
+
+var is_dead = false
+
+func _ready() -> void:
+	loop = false
+	rotates = true
+	is_dead = false
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if is_dead:
+		return
+		
+	progress += speed * delta
+	
+	# have we reached the end of the path?
+	var path = get_parent() as Path2D
+	if path and progress >= path.curve.get_baked_length():
+		queue_free()
+
+func _on_enemy_enemy_hit(points: int) -> void:
+	is_dead = true
+
+func _on_enemy_died() -> void:
+	queue_free()
+"
+
+[node name="RightToLeftOnPath" type="PathFollow2D" unique_id=156337742]
+script = SubResource("GDScript_nd2ck")
+
+[node name="Enemy" parent="." unique_id=893029048 instance=ExtResource("2_dgexa")]
+rotation = 4.712389
+
+[connection signal="died" from="Enemy" to="." method="_on_enemy_died"]
+[connection signal="enemy_hit" from="Enemy" to="." method="_on_enemy_enemy_hit"]

@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 	if path and progress >= path.curve.get_baked_length():
 		queue_free()
 
-func _on_enemy_enemy_hit() -> void:
+func _on_enemy_enemy_hit(points: int) -> void:
 	is_dead = true
 
-func _on_enemy_died(points: int) -> void:
+func _on_enemy_died() -> void:
 	queue_free()
