@@ -176,7 +176,7 @@ shape = SubResource("RectangleShape2D_hvfyp")
 
 [node name="Ship" type="AnimatedSprite2D" parent="." unique_id=2090935682]
 sprite_frames = SubResource("SpriteFrames_vtle1")
-animation = &"explode"
+animation = &"left"
 
 [node name="Boosters" type="AnimatedSprite2D" parent="." unique_id=776355778]
 position = Vector2(0, 32)

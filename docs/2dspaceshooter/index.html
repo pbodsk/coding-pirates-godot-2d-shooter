@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>index</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style/github-markdown.css" />
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+<article class="markdown-body">
+<h1 id="coding-pirates-godot-2d-space-shooter">Coding Pirates Godot 2D
+Space Shooter</h1>
+<p>Velkommen til vores første Godot-guideserie!</p>
+<p>I denne guideserie skal vi lære at lave et klassisk 2D shoot'em'up
+spil som dem din mor og far smed spandevis af en-kroner efter på
+grillbaren da de var unge...spørg dem...det gjorde de garanteret.</p>
+<p><img src="assets/gameassets/game.png" alt="game" /></p>
+<p>Det kan måske virke kedeligt at lave et 2D spil når der er så mange
+fede 3D spil, men ligesom du heller ikke kunne løbe før du gik (igen,
+spørg dine forældre!) er vi nødt til at lære lidt om grundlæggende
+spiludvikling inden vi kaster os ud i 3D spil med lys og avanceret
+vektor matematik, derfor et 2D spil hvor der er <em>masser</em> af sjove
+ting at lære.</p>
+<p>Vi skal lære:</p>
+<ul>
+<li>Hvordan Godot virker
+<ul>
+<li>Hvad er noder og scener?</li>
+<li>Hvad er scripts?</li>
+</ul></li>
+<li>Hvordan flytter vi noget rundt på skærmen?</li>
+<li>Hvordan laver vi en baggrund så det ser ud som om vi bevæger
+os?</li>
+<li>Hvordan skyder vi?</li>
+<li>Hvordan får vi nogle fjender på skærmen</li>
+<li>Og</li>
+<li>Så</li>
+<li>Videre</li>
+</ul>
+<p>Det bliver sjovt, sommetider svært men sjovt og bare rolig, vi er her
+til at hjælpe.</p>
+<p>Her er de levels vi skal igennem.</p>
+<p>Du kan sætte hak ud for en level når du er færdig med den, så kan du
+se hvor langt du er nået.</p>
+<h2 id="levels">Levels</h2>
+<ul class="level-progress">
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson01" aria-label="Mark Level 1, Sprites as complete" />
+    <a href="lessons/lesson01">Level 1, Sprites</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson02" aria-label="Mark Level 2, Animated Sprites as complete" />
+    <a href="lessons/lesson02">Level 2, Animated Sprites</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson03" aria-label="Mark Level 3, Parallax Background as complete" />
+    <a href="lessons/lesson03">Level 3, Parallax Background</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson04" aria-label="Mark Level 4, Player Weapons as complete" />
+    <a href="lessons/lesson04">Level 4, Player Weapons</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson05" aria-label="Mark Level 5, Enemies as complete" />
+    <a href="lessons/lesson05">Level 5, Enemies</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson06" aria-label="Mark Level 6, Exploding Enemies as complete" />
+    <a href="lessons/lesson06">Level 6, Exploding Enemies</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson07" aria-label="Mark Level 7, Exploding Player as complete" />
+    <a href="lessons/lesson07">Level 7, Exploding Player</a>
+</li>
+<li>
+    <input type="checkbox" data-progress-key="lessons/lesson08" aria-label="Mark Level 8, UI as complete" />
+    <a href="lessons/lesson08">Level 8, UI</a>
+</li>
+</ul>
+
+<h2 id="assets">Assets</h2>
+<p><a href="assets/gameassets/Godot2DAssets.zip">Assets kan downloades
+her</a></p>
+<p>Det er en zip-fil, så den skal du pakke ud. Sig til, hvis du skal
+have hjælp med det.</p>
+<h2 id="get-ready-player-1">Get Ready Player 1!</h2>
+<p>Når du er klar, klikker du bare på <a href="lessons/lesson01">Level
+1, Sprites</a>.</p>
+<script>
+  (function () {
+    var storagePrefix = "coding-pirates-2d-shooter:level-progress:";
+    var levelsHeading = document.getElementById("levels");
+    var levelsList = levelsHeading && levelsHeading.nextElementSibling;
+
+    if (!levelsList || levelsList.tagName !== "UL") {
+      return;
+    }
+
+    levelsList.querySelectorAll('input[type="checkbox"][data-progress-key]').forEach(function (checkbox) {
+      var storageKey = storagePrefix + checkbox.getAttribute("data-progress-key");
+
+      checkbox.checked = localStorage.getItem(storageKey) === "true";
+
+      checkbox.addEventListener("change", function () {
+        localStorage.setItem(storageKey, checkbox.checked ? "true" : "false");
+      });
+    });
+  }());
+</script>
+
+</article>
+</body>
+</html>

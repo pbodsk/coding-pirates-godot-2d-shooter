@@ -46,7 +46,9 @@ func _process(delta: float) -> void:
 	
 	# Movement
 	var input = Input.get_vector("left", "right", "up", "down")
-	position += input * speed * delta
+	var distance = input * speed * delta
+	position += distance
+	
 	position = position.clamp(Vector2(24, 24), screen_size - Vector2(24, 24))
 
 	# Animations

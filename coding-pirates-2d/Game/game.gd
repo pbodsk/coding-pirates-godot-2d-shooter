@@ -6,7 +6,7 @@ func _ready() -> void:
 	$Player.stop()
 	$EnemySpawner.stop()
 	$UI/CenterContainer/GameOver.hide()
-
+	
 func _on_start_pressed() -> void:
 	$UI/CenterContainer/StartContainer.hide()
 	score = 0
@@ -14,7 +14,6 @@ func _on_start_pressed() -> void:
 	
 	$Player.start()
 	$EnemySpawner.start()
-
 
 func _on_player_player_died() -> void:
 	# Stop the game

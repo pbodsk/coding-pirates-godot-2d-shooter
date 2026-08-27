@@ -1,0 +1,74 @@
+body {
+    background-color: light-dark(
+        #eee,
+        #222
+    );
+    margin: 0;
+}
+
+.markdown-body {
+    padding: 32px;
+    background-color: light-dark(
+        #eee,
+        #222
+    );
+}
+.markdown-body img {
+    max-width: min(100%, 640px);
+    max-height: auto;
+}
+
+.level-progress {
+    list-style: none;
+    padding-left: 0;
+}
+
+.level-progress input[type="checkbox"]:checked + a {
+    text-decoration: line-through;
+}
+
+/* Pandoc syntax tokens mapped onto GitHub's light/dark palette. */
+.markdown-body code span.kw,
+.markdown-body code span.cf,
+.markdown-body code span.im,
+.markdown-body code span.pp {
+    color: var(--color-prettylights-syntax-keyword);
+}
+
+.markdown-body code span.bn,
+.markdown-body code span.cn,
+.markdown-body code span.dv,
+.markdown-body code span.fl {
+    color: var(--color-prettylights-syntax-constant);
+}
+
+.markdown-body code span.fu {
+    color: var(--color-prettylights-syntax-entity);
+}
+
+.markdown-body code span.ch,
+.markdown-body code span.sc,
+.markdown-body code span.ss,
+.markdown-body code span.st,
+.markdown-body code span.vs {
+    color: var(--color-prettylights-syntax-string);
+}
+
+.markdown-body code span.va,
+.markdown-body code span.at {
+    color: var(--color-prettylights-syntax-variable);
+}
+
+.markdown-body code span.an,
+.markdown-body code span.co,
+.markdown-body code span.cv,
+.markdown-body code span.do,
+.markdown-body code span.in,
+.markdown-body code span.wa {
+    color: var(--color-prettylights-syntax-comment);
+}
+
+.markdown-body code span.al,
+.markdown-body code span.er {
+    color: var(--color-prettylights-syntax-invalid-illegal-text);
+}

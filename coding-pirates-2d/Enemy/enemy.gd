@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func set_enemy_type(type: int) -> void:
@@ -33,7 +33,6 @@ func hit() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
-
 
 func _on_shoot_timer_timeout() -> void:
 	var new_bullet = bullet.instantiate()
